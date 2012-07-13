@@ -1,0 +1,82 @@
+
+
+body {
+      width: 1024;
+      margin: 0 auto;
+      background: #69F;
+}
+#contentlist {
+              padding: 2px 0 0 10px;
+}
+
+.space {
+	line-height: .1em;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+#header {
+         
+          color: black;
+                 
+}
+#footer {
+          padding: 10px 0 0 10px;
+ }         color: white;
+                 
+#logo {
+        display: inline;
+        margin: 0 0 0 0;
+}
+
+#pics {
+        margin: 20px 0 0 0;
+
+}
+
+#search_homes {
+               margin: 0 12px 0 12px;
+
+}
+ 
+#map_canvas{
+    width: 100%;
+    height:680px;
+    margin: 0 auto;
+}
+
+h1, input, button, ul {
+						display: block;
+						margin: 8% auto;
+						padding: 3% 3%;
+						width: 100%;
+}
+
+ul {
+	color: #CCF;
+	font-weight: bold;
+}
+
+h1 {
+	 background: blue;
+	 color: white;
+	 text-align: center;
+}
+
+input, button {
+				-webkit-appearance: none;
+				border: transparent;
+				font-size: 0.2em;
+}
+
+button {
+		background: #06C;
+		color: #9CF;
+		font-weight: bold;
+}
+
+button:active {
+				background: #9CF;
+				color: #06C;
+}
+
