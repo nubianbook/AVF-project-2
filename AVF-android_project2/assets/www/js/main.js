@@ -106,49 +106,58 @@ function alertDismissed() {
 //
 function showAlert() {
     navigator.notification.alert(
-                                 'Thats a Good Choice',  // message
+                                 'AVF-1207',  // message
                                  alertDismissed,         // callback
-                                 'Make a Selection',     // title
+                                 'Carol Gaylor',     // title
                                  'Done'                  // buttonName
                                  );
 }
 
-			var TAP = ('ontouchend' in window) ? 'touchend' : 'click';
-			document.addEventListener('DOMContentLoaded', function () {
-             x$('#houseSubmit').on(TAP, function () {
-             var filter = x$('#houseName')[0].value;
-                 if (!filter) {
-				// no contents
-							return;
-				} else {
-							findContactByName(filter, function (contacts) {
-							alert(contacts.length + ' contact(s) found matching "' + filter + '"');
-					});
-	}
-       
-       function findContactByName(name, callback) {
-              function onError() {
-                   alert('Error: unable to read contacts');
-              };
-                   var fields = ["displayName", "name"],
-                      options = new ContactFindOptions();
-                      options.filter = name;
-                      options.multiple = true;
-                    // find contacts
-                   navigator.service.contacts.find(fields, callback, onError, options);
+				
+				// The watch id references the current `watchAcceleration`
+var watchID = null;
+
+// Wait for PhoneGap to load
+//
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// PhoneGap is ready
+//
+function onDeviceReady() {
+    startWatch();
 }
 
-			var item = '<li>{{ name }}</li>';
-				if (!filter) {
-					// no contents
-							return;
-			} else {
-						findContactByName(filter, function (contacts) {
-								var i = 0, contactItem, data;
-						for (i; i<contacts.length; i++) {
-						data = { name: contacts[i].name.formatted }						
-						contactItem = Mustache.to_html(item, data);
-						x$('#houseList').bottom(contactItem);
-						x$('#houseList').bottom(contacts[i].name);
-					}
-				});
+// Start watching the acceleration
+//
+function startWatch() {
+    
+    // Update acceleration every 3 seconds
+    var options = { frequency: 3000 };
+    
+    watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+}
+
+// Stop watching the acceleration
+//
+function stopWatch() {
+    if (watchID) {
+        navigator.accelerometer.clearWatch(watchID);
+        watchID = null;
+    }
+}
+
+// onSuccess: Get a snapshot of the current acceleration
+//
+function onSuccess(acceleration) {
+    var element = document.getElementById('accelerometer');
+    element.innerHTML = 'Acceleration X: ' + acceleration.x + '<br />' +
+    'Acceleration Y: ' + acceleration.y + '<br />' +
+    'Acceleration Z: ' + acceleration.z + '<br />' +
+    'Timestamp: '      + acceleration.timestamp + '<br />';
+}
+
+// onError: Failed to get the acceleration
+//
+function onError() {
+    alert('onError!');
+}
