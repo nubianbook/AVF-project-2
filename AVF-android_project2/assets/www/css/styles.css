@@ -45,38 +45,23 @@ body {
     margin: 0 auto;
 }
 
-h1, input, button, ul {
-						display: block;
-						margin: 8% auto;
-						padding: 3% 3%;
-						width: 100%;
+#video {
+         display: block;
+         margin-bottom: 12px;
 }
 
-ul {
-	color: #CCF;
-	font-weight: bold;
+#video  {
+  		 -webkit-column-span: all;
+  		 -moz-column-span: all;
+  		  column-span: all;
+  		  clear:both;
 }
 
-h1 {
-	 background: blue;
-	 color: white;
-	 text-align: center;
-}
 
-input, button {
-				-webkit-appearance: none;
-				border: transparent;
-				font-size: 0.2em;
-}
-
-button {
-		background: #06C;
-		color: #9CF;
-		font-weight: bold;
-}
-
-button:active {
-				background: #9CF;
-				color: #06C;
-}
-
+#canvasOverlay  {
+				  position:absolute;
+				  top:0px;
+				  left:0px;
+				  background-color: transparent;
+				  margin-bottom:25px;
+} 

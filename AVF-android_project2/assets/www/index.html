@@ -35,13 +35,14 @@
                         <!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
                         <script src="js/modernizr.custom.min.js"></script>
                         <script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"></script>
-                        <script src="js/xui-2.3.2.js"></script>
-                        <script src="js/mustache.js"></script>
+                        
                         
                         
                         <!-- iPad/iPhone specific css below, add after your main css -->
-                        <link rel="stylesheet" href="jquery/jquery.mobile-1.1.0.min.css" type="text/css" />
-                        <link rel="stylesheet" href="css/styles.css" type="text/css" />
+                        <link rel="stylesheet" href="jquery/jquery.mobile-1.1.0.min.css"  />
+                        <link rel="stylesheet" href="http://vjs.zencdn.net/c/video-js.css" >
+                        <link rel="stylesheet" href="css/screen.css"  />
+                        <link rel="stylesheet" href="css/styles.css"  />
                         
                         
     </head>
@@ -198,13 +199,24 @@
                 </ul>
             </nav>
             
-            <div data-role="content" class="content">
+            
                 
-                <p>
-                Media
-                </p>
+                <div id="video-container" data-role="button">
+                    <video width="250" height="280" preload id="video" controls> 
+                        <!-- MP4 must be first for iPad! -->
+                        <source src="avfpt2.mp4" type="video/mp4"> <!-- Safari / iOS video -->
+                            <!--<source src="avfpt2.ogv" type="video/ogg"> Firefox / Opera / Chrome10 -->
+                            </video>
+                    <canvas id="canvasOverlay" width="250" height="280"></canvas>
+                    <div id="controls" class="hidden">
+                        <div id="playPause" class="paused" tabindex="1">Play/Pause</div>
+                        <div id="timer">00:00</div>
+                        <div id="muteUnmute" class="unmuted" tabindex="2">Mute/Unmute</div>
+                 </div><!-- #controls -->
+                    
+                </div> <!-- /#video-container -->
                 
-            </div> <!-- end of cta-div -->
+            
             
             
             <footer data-role="footer" id="footer" data-position="fixed">
@@ -312,11 +324,14 @@
         <!-- JavaScript under here -->
         
         
-        <script type="text/javascript" src="jquery/jquery.js"></script>
-        <script type="text/javascript" src="jquery/jquery.mobile-1.1.0.min.js"></script>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script type="text/javascript" src="libs/jquery.ui.map.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+        <script src="jquery/jquery.js"></script>
+        <script src="jquery/jquery.mobile-1.1.0.min.js"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script src="http://vjs.zencdn.net/c/video.js"></script>
+        <script src="libs/jquery.ui.map.js"></script>
+        <script src="js/videoControls.js"></script>
+        <script src="js/accel.js"></script>
+        <script src="js/main.js"></script>
         
         
     </body>
